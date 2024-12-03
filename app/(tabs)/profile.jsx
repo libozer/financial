@@ -40,7 +40,7 @@ const Profile = () => {
       isNaN(trimmedAmount) ||
       trimmedAmount === "" ||
       trimmedAmount < 0 ||
-      trimmedAmount > 1000000000000 ||
+      trimmedAmount > 1000000000 ||
       trimmedAmount === "0"
     ) {
       Alert.alert("Неверный ввод", "Введите допустимую сумму.");

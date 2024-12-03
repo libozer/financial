@@ -12,7 +12,6 @@ export default function App() {
   const { isLoading, isLoggedIn } = useGlobalContext();
   const [isPortrait, setIsPortrait] = useState(true);
 
-  // Обновление ориентации
   const handleOrientationChange = () => {
     const { width, height } = Dimensions.get("window");
     setIsPortrait(height >= width);

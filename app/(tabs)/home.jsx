@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { LogBox } from "react-native";
+const { MyLibrary } = NativeModules;
 
 import {
   StyleSheet,
@@ -46,22 +47,11 @@ const Home = () => {
   }));
 
   const handleAddCategory = () => {
-    const trimmedAmount = amount.trim();
-
-    if (
-      !newCategory ||
-      isNaN(trimmedAmount) ||
-      trimmedAmount === "" ||
-      trimmedAmount < 0 ||
-      trimmedAmount > 1000000000000 ||
-      trimmedAmount === "0"
-    ) {
-      Alert.alert(
-        "Неверный ввод",
-        "Пожалуйста, выберите категорию и введите допустимую сумму."
-      );
-      return;
-    }
+    const newAmount = MyLibrary.calculateAmount(
+      currentAmount,
+      additionalAmount
+    );
+    console.log("Новый баланс: ", newAmount);
 
     if (parseFloat(trimmedAmount) > balance) {
       Alert.alert(
